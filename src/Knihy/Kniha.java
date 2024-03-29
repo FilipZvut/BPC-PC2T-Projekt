@@ -1,16 +1,48 @@
 package Knihy;
 
-public abstract class Kniha {
+abstract class Kniha {
 
-    protected String Nazev;
-    protected String[] Autor;
-    protected int RokVydani;
-    protected boolean Dostupnost;
+    private String Nazev;
+    private String[] Autor;
+    private int RokVydani;
+    private boolean Dostupnost;
 
-    public Kniha(String nazev, String[] autor, int rokVydani, boolean dostupnost) {
+    protected Kniha(String nazev, String[] autor, int rokVydani, boolean dostupnost) {
         Nazev = nazev;
         Autor = autor;
         RokVydani = rokVydani;
+        Dostupnost = dostupnost;
+    }
+
+    public String getNazev() {
+        return Nazev;
+    }
+
+    public void setNazev(String nazev) {
+        Nazev = nazev;
+    }
+
+    public String[] getAutor() {
+        return Autor;
+    }
+
+    public void setAutor(String[] autor) {
+        Autor = autor;
+    }
+
+    public int getRokVydani() {
+        return RokVydani;
+    }
+
+    public void setRokVydani(int rokVydani) {
+        RokVydani = rokVydani;
+    }
+
+    public boolean isDostupnost() {
+        return Dostupnost;
+    }
+
+    public void setDostupnost(boolean dostupnost) {
         Dostupnost = dostupnost;
     }
 }
