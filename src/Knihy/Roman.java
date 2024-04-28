@@ -2,6 +2,8 @@ package Knihy;
 
 public class Roman extends Kniha {
     
+    private Zanry Zanr;
+
     public enum Zanry { 
         Historicky,
         Biograficky, 
@@ -10,10 +12,8 @@ public class Roman extends Kniha {
         Goticky
     }
     
-    private Zanry Zanr;
-
-    public Roman(String nazev, String[] autor, int rokVydani, boolean dostupnost, Zanry zanr){    
-        super(nazev,autor,rokVydani,dostupnost);
+    public Roman(String nazev, String[] autor, int rokVydani, boolean dostupnost, Zanry zanr) {    
+        super(nazev,autor,rokVydani,dostupnost, TypKnihy.Roman);
         Zanr = zanr;
     }
 
@@ -21,8 +21,14 @@ public class Roman extends Kniha {
         return Zanr;
     }
 
-    public void setZanr(Zanry zanr) {
-        Zanr = zanr;
+    @Override
+    public String toString() {
+        return super.toString() + ", typ: roman, Zanr: " + Zanr;
     }
 
+    @Override
+    public String formatovatDoSouboru()
+    {
+        return super.formatovatDoSouboru() + ";" + Zanr.ordinal();
+    }
 }
