@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-//Upravit přidání knihy aby se otestovalo jestli hniha existuje před tím než se přidá
-
 public class App {
     
     private static Knihovna knihovna = new Knihovna();
