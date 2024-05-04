@@ -1,7 +1,6 @@
 package Knihy;
 
 public abstract class Kniha {
-public abstract class Kniha {
 
     private String Nazev;
     private String[] Autor;

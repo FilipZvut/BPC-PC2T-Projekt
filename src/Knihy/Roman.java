@@ -4,8 +4,6 @@ public class Roman extends Kniha {
     
     private Zanry Zanr;
 
-    private Zanry Zanr;
-
     public enum Zanry { 
         HISTORICKY,
         BIOGRAFICKY, 
