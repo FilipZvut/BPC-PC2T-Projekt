@@ -1,15 +1,14 @@
 import java.util.Scanner;
-
 import Knihy.Roman;
 import Knihy.Roman.Zanry;
-import VlastniException.KnihaException;
 import Knihy.Ucebnice;
 import Knihy.Kniha.TypKnihy;
+import VlastniException.KnihaException;
 
 public abstract class OsetreneZadavani {
 
-    private static Knihovna knihovna = App.getKnihovna();
-    private static Scanner sc = new Scanner(System.in);
+    public static Knihovna knihovna = App.getKnihovna();
+    public static Scanner sc = new Scanner(System.in);
 
     public static int IntVstup() {
         int cislo = 0;
@@ -69,14 +68,14 @@ public abstract class OsetreneZadavani {
             } else {
                 typ = knihovna.getTypKnihy(nazev1);
             }
-            if (typ == TypKnihy.Roman) {
+            if (typ == TypKnihy.ROMAN) {
                 Zanry zanr = romanZanry();
-                Roman novaKniha = new Roman(nazev, autori.split(", "), rokVydani, dostupnost, zanr);
+                Roman novaKniha = new Roman(nazev, autori.split(","), rokVydani, dostupnost, zanr);
                 if(operace == 1)
                     knihovna.pridatKnihu(novaKniha);
                 else
                     knihovna.upravitKnihu(nazev1, novaKniha);
-            } else if (typ == TypKnihy.Ucebnice) {
+            } else if (typ == TypKnihy.UCEBNICE) {
                 System.out.println("Zadejte ročník učebnice:");
                 int rocnik = rocnikUcebnice();
                 Ucebnice novaKniha = new Ucebnice(nazev, autori.split(","), rokVydani, dostupnost, rocnik);
@@ -99,7 +98,7 @@ public abstract class OsetreneZadavani {
         System.out.println("Zadejte žánr románu (Historicky/Biograficky/Profesni/Rytirsky/Goticky):");
 
         while (!uspesne) {
-            String zanrString = sc.nextLine();
+            String zanrString = sc.nextLine().toUpperCase();
             try {
                 zanr = Zanry.valueOf(zanrString);
                 uspesne = true;
@@ -117,7 +116,7 @@ public abstract class OsetreneZadavani {
         
         while (!uspesne) {
             System.out.println("Zadejte typ knihy (Roman/Ucebnice):");
-            String typString = sc.nextLine();
+            String typString = sc.nextLine().toUpperCase();
             try {
                 typKnihy = TypKnihy.valueOf(typString);
                 uspesne = true;
@@ -132,9 +131,8 @@ public abstract class OsetreneZadavani {
     public static int rocnikUcebnice() {
         int rocnik = 0;
         boolean uspesne = false;
-        
+
         while (!uspesne) {
-            System.out.println("Zadejte typ knihy (Roman/Ucebnice):");
             try {
                 rocnik = IntVstup();
                 if(rocnik>9 || rocnik<1)
@@ -195,6 +193,5 @@ public abstract class OsetreneZadavani {
         return nazev;
 
     }
-
 
 }

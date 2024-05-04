@@ -29,7 +29,7 @@ public class TestKnihovny {
 
     @Test
     public void testPridatRoman() {
-        Roman roman = new Roman("TestRoman1", new String[]{"TestAutor"}, 2020, true, Zanry.Goticky);
+        Roman roman = new Roman("TestRoman1", new String[]{"TestAutor"}, 2020, true, Zanry.GOTICKY);
         assertTrue(knihovna.pridatKnihu(roman));
         assertTrue(knihovna.vyhledat("TestRoman1"));
     }
@@ -80,8 +80,8 @@ public class TestKnihovny {
 
     @Test
     public void testVypisAutora() {
-        Roman roman = new Roman("Test", new String[]{"test2"}, 2020, true, Zanry.Goticky);
-        Roman roman2 = new Roman("Test2", new String[]{"test2"}, 2020, true, Zanry.Goticky);
+        Roman roman = new Roman("Test", new String[]{"test2"}, 2020, true, Zanry.GOTICKY);
+        Roman roman2 = new Roman("Test2", new String[]{"test2"}, 2020, true, Zanry.GOTICKY);
         knihovna.pridatKnihu(roman);
         knihovna.pridatKnihu(roman2);
         knihovna.vypisAutora("test2"); 
@@ -89,17 +89,17 @@ public class TestKnihovny {
 
     @Test
     public void testVypisZanru() {
-        Roman roman = new Roman("Test", new String[]{"TestAutora"}, 2020, true, Zanry.Goticky);
+        Roman roman = new Roman("Test", new String[]{"TestAutora"}, 2020, true, Zanry.GOTICKY);
         knihovna.pridatKnihu(roman);
         Ucebnice ucebnice = new Ucebnice("TestUcebnice", new String[]{"TestAutor"}, 2019, true, 1);
         knihovna.pridatKnihu(ucebnice);
-        knihovna.vypisZanru(TypKnihy.Roman);
-        knihovna.vypisZanru(TypKnihy.Ucebnice);
+        knihovna.vypisZanru(TypKnihy.ROMAN);
+        knihovna.vypisZanru(TypKnihy.UCEBNICE);
     }
 
     @Test
     public void testVypisVypujceno() {
-        Roman roman = new Roman("Test", new String[]{"TestAutora"}, 2020, false, Zanry.Goticky);
+        Roman roman = new Roman("Test", new String[]{"TestAutora"}, 2020, false, Zanry.GOTICKY);
         knihovna.pridatKnihu(roman);
         Ucebnice ucebnice = new Ucebnice("TestUcebnice4", new String[]{"TestAutor"}, 2019, true, 1);
         knihovna.pridatKnihu(ucebnice);

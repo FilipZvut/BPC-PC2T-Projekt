@@ -4,16 +4,18 @@ public class Roman extends Kniha {
     
     private Zanry Zanr;
 
+    private Zanry Zanr;
+
     public enum Zanry { 
-        Historicky,
-        Biograficky, 
-        Profesni, 
-        Rytirsky, 
-        Goticky
+        HISTORICKY,
+        BIOGRAFICKY, 
+        PROFESNI, 
+        RYTIRSKY, 
+        GOTICKY
     }
     
     public Roman(String nazev, String[] autor, int rokVydani, boolean dostupnost, Zanry zanr) {    
-        super(nazev,autor,rokVydani,dostupnost, TypKnihy.Roman);
+        super(nazev,autor,rokVydani,dostupnost, TypKnihy.ROMAN);
         Zanr = zanr;
     }
 

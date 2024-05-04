@@ -61,13 +61,12 @@ public abstract class DatabaseConnection {
         return knihy;
     }
 
-
     public static boolean ulozitKnihyDoDatabaze(TreeMap<String,Kniha> knihy, Connection connection) {
-        
-        int zanrRocnik;
-        
+
+        int zanrRocnik;     
         String sqlInsert = "INSERT INTO Knihy (Nazev, Autor, RokVydani, Dostupnost, Typ, ZanrRocnik) VALUES (?, ?, ?, ?, ?, ?)";
         String sqlDelete = "DELETE FROM Knihy";
+
         try (PreparedStatement statementDelete = connection.prepareStatement(sqlDelete);
              PreparedStatement statementInsert = connection.prepareStatement(sqlInsert)) {
             

@@ -1,6 +1,7 @@
 package Knihy;
 
 public abstract class Kniha {
+public abstract class Kniha {
 
     private String Nazev;
     private String[] Autor;
@@ -9,8 +10,8 @@ public abstract class Kniha {
     private TypKnihy Typ;
     
     public enum TypKnihy{
-        Roman,
-        Ucebnice
+        ROMAN,
+        UCEBNICE
     }
 
     protected Kniha(String nazev, String[] autor, int rokVydani, boolean dostupnost, TypKnihy typ) {
@@ -38,7 +39,7 @@ public abstract class Kniha {
     }
 
     public int getTypKnihyINT() {
-        if(Typ==TypKnihy.Roman)
+        if(Typ==TypKnihy.ROMAN)
             return 0;
         else
             return 1;

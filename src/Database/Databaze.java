@@ -49,9 +49,7 @@ public class Databaze {
             Zanry[] zanr = Zanry.values();
             File soubor = new File("UlozeneKnihy\\" + nazevSouboru + ".txt");
             BufferedReader br = new BufferedReader(new FileReader(soubor));
-
             String radek = br.readLine();
-
             String[] hodnoty = radek.split(";");
 
             String nazev = hodnoty[0];
@@ -60,8 +58,7 @@ public class Databaze {
             boolean dostupnost = Boolean.parseBoolean(hodnoty[3]);
             int typ = Integer.parseInt(hodnoty[4]);
             int zanrRocnik = Integer.parseInt(hodnoty[5]);
-
-            
+         
             if(typ==0) {
                 Roman roman = new Roman(nazev, autori, rokVydani, dostupnost, zanr[zanrRocnik]);
                 SeznamKnih.put(nazev, roman);
