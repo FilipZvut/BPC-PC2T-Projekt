@@ -53,7 +53,7 @@ public abstract class DatabaseConnection {
             }
         }
         catch(SQLException e) {
-            System.out.println("Chyba při přístupu k databázi: " + e.getMessage());    
+            System.out.println("Chyba při přístupu k databázi:");    
         } 
         catch(NullPointerException e) {
             System.out.println("Chyba při načítání knih, databáze není připojena");
@@ -91,7 +91,7 @@ public abstract class DatabaseConnection {
             return true;
         }
         catch (SQLException e) {
-            System.out.println("Chyba při přístupu k databázi: " + e.getMessage());
+            System.out.println("Chyba při přístupu k databázi");
             return false;
         }
         catch (NullPointerException e) {

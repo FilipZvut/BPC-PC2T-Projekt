@@ -63,11 +63,11 @@ public abstract class Kniha {
         String dostupnost;
 
         if(Dostupnost)
-            dostupnost = "Volna";
+            dostupnost = "volná";
         else
-            dostupnost = "Vypujcena";
+            dostupnost = "vypůjčená";
 
-        vypis = "Nazev: "+ Nazev + ", autor: " + autoriNaString() + ", rok vydani: " + RokVydani + ", dostupnost: " + dostupnost;
+        vypis = "Název: "+ Nazev + ", autor: " + autoriNaString() + ", rok vydání: " + RokVydani + ", dostupnost: " + dostupnost;
 
         return vypis;
     }

@@ -15,7 +15,7 @@ public class Ucebnice extends Kniha{
    
     @Override
     public String toString() {
-        return super.toString() + ", typ: ucebnice, rocnik: " + Rocnik;
+        return super.toString() + ", typ: učebnice, ročník: " + Rocnik;
     }
     
     @Override

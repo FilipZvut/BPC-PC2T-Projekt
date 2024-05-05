@@ -45,7 +45,7 @@ public class Knihovna {
         Kniha vyhledanaKniha;
         if(SeznamKnih.containsKey(nazev)) {
             vyhledanaKniha = SeznamKnih.get(nazev);
-            System.out.println("Vyhledana kniha:");
+            System.out.println("Vyhledaná kniha:");
             System.out.println(vyhledanaKniha);
             return true;
         }
@@ -66,7 +66,7 @@ public class Knihovna {
 
     public boolean vypisKnih() {
         try {
-        System.out.println("Vypis knih:");
+        System.out.println("Výpis knih:");
         for (Kniha kniha : SeznamKnih.values()) {
             System.out.println(kniha);
         }
@@ -92,7 +92,7 @@ public class Knihovna {
             }
         }
     
-        System.out.println("Chronologicky serazeny knihy od autora " + jmeno + ":");
+        System.out.println("Chronologicky seřazené knihy od autora " + jmeno + ":");
     
         for (List<Kniha> knihy : autorovyKnizky.values()) {
             for (Kniha kniha : knihy) {
@@ -103,7 +103,7 @@ public class Knihovna {
 
     public void vypisZanru(TypKnihy typ) {
         
-        System.out.println("Vypis knih podle zanru:");
+        System.out.println("Výpis knih podle žánru: ");
         for (Kniha kniha : SeznamKnih.values()) {
             if(kniha.getTypKnihy() == typ)
                 System.out.println(kniha);
@@ -112,7 +112,7 @@ public class Knihovna {
 
     public void vypisVypujceno() {
         
-        System.out.println("Vypis Vypujcenych knih: ");
+        System.out.println("Výpis vypůjčených knih: ");
         for (Kniha kniha : SeznamKnih.values()) {
             if(!kniha.getDostupnost())
                 System.out.println(kniha);
@@ -157,6 +157,4 @@ public class Knihovna {
     public boolean overitExistenci(String nazev) {
         return SeznamKnih.containsKey(nazev);
     }
-       
-
 }

@@ -18,14 +18,14 @@ public class App {
             System.out.println("2. Upravit knihu");
             System.out.println("3. Smazat knihu");
             System.out.println("4. Vyhledat knihu");
-            System.out.println("5. Označit knihu Vypujceno/Volna");
-            System.out.println("6. Vypis vsech knih");
-            System.out.println("7. Vypis knih od urciteho autora");
-            System.out.println("8. Vypis vsech knih podle zanru");
-            System.out.println("9. Vypis vypujcenych knih");
-            System.out.println("10. Ulozit knihu do souboru");
-            System.out.println("11. Nacist knihu ze souboru");
-            System.out.println("12. Konec");
+            System.out.println("5. Označit knihu Vypůjčená/Volná");
+            System.out.println("6. Výpis všech knih");
+            System.out.println("7. Výpis knih od určitého autora");
+            System.out.println("8. Výpis všech knih podle žánru");
+            System.out.println("9. Výpis vypůjčených knih");
+            System.out.println("10. Uložit knihu do souboru");
+            System.out.println("11. Načíst knihu ze souboru");
+            System.out.println("12. Ukončit aplikaci");
             int volba = OsetreneZadavani.IntVstup();
             System.out.println();
 

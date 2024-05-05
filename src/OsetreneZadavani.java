@@ -20,7 +20,7 @@ public abstract class OsetreneZadavani {
                 uspesne = true;
             } else {
                 System.out.println("Chybný vstup. Zadejte platné celé číslo.");
-                sc.next(); // Zahození neplatného vstupu
+                sc.next();
             }
         }
         sc.nextLine();
@@ -44,6 +44,7 @@ public abstract class OsetreneZadavani {
                 System.out.println("Chybný vstup. .");
             }
         }
+        
         return bool;
     }
 
@@ -52,10 +53,10 @@ public abstract class OsetreneZadavani {
         
         try {
             if(operace==0)
-                System.out.println("Nove udaje:");
+                System.out.println("Nové údaje:");
             String nazev = neExistujiciJmenoKnihy(nazev1);
             if("konec".equals(nazev))
-                throw new KnihaException("Operace ukoncena");
+                throw new KnihaException("Operace ukončena");
             System.out.println("Zadejte autora(y) knihy oddělené čárkou:");
             String autori = sc.nextLine();
             System.out.println("Zadejte rok vydání:");
@@ -144,8 +145,7 @@ public abstract class OsetreneZadavani {
             }
         }
 
-        return rocnik;
-    
+        return rocnik;  
     }
 
     public static String existujiciJmenoKnihy(String zprava) {
@@ -167,8 +167,8 @@ public abstract class OsetreneZadavani {
                 System.out.println(e.getMessage());
             }
         }
-        return nazev;
 
+        return nazev;
     }
 
     public static String neExistujiciJmenoKnihy(String nazev1) {
@@ -190,8 +190,8 @@ public abstract class OsetreneZadavani {
                 System.out.println(e.getMessage());
             }
         }
-        return nazev;
 
+        return nazev;
     }
 
 }

@@ -22,7 +22,7 @@ public class Databaze {
             PropojenaDatabaze = DatabaseConnection.getConnection();
         }
         catch(SQLException e) {
-            System.out.println("Chyba při připojování k databázi: " + e.getMessage());
+            System.out.println("Chyba při připojování k databázi");
         }
         catch(NullPointerException e) {
             System.out.println("Nepodařilo se připojit k databázi");
@@ -39,7 +39,7 @@ public class Databaze {
             return true;
         }
         catch(IOException e) {
-            System.out.println("Chyba pri ukladani knihy: " + e.getMessage());
+            System.out.println("Chyba pri ukladani knihy");
             return false;
         }
     }
@@ -72,7 +72,7 @@ public class Databaze {
             return true;
 
         } catch (IOException e) {
-            System.out.println("Chyba při načítání knihy: " + e.getMessage());
+            System.out.println("Chyba při načítání knihy");
             return false;
         }
     }
