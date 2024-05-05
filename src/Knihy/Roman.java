@@ -23,7 +23,7 @@ public class Roman extends Kniha {
 
     @Override
     public String toString() {
-        return super.toString() + ", typ: roman, Zanr: " + Zanr;
+        return super.toString() + ", typ: roman, zanr: " + Zanr;
     }
 
     @Override
