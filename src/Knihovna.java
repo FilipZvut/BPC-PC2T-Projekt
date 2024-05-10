@@ -7,71 +7,58 @@ import Knihy.Kniha;
 import Knihy.Kniha.TypKnihy;
 
 public class Knihovna {
-    
-    private SortedMap<String, Kniha> SeznamKnih;
-    private Databaze _db;
+
+    private final SortedMap<String, Kniha> seznamKnih;
+    private final Databaze db;
 
     public Knihovna() {
-        SeznamKnih = new TreeMap<>();
-        _db = new Databaze();
-
+        seznamKnih = new TreeMap<>();
+        db = new Databaze();
     }
 
     public boolean pridatKnihu(Kniha kniha) {
-        if(SeznamKnih.put(kniha.getNazev(), kniha) == null)
-            return true;
-        else
-            return false;          
+        return seznamKnih.putIfAbsent(kniha.getNazev(), kniha) == null;
     }
 
     public boolean upravitKnihu(String nazev, Kniha kniha) {
-        if(SeznamKnih.containsKey(nazev)) {
-            SeznamKnih.remove(nazev);
-            SeznamKnih.put(kniha.getNazev(), kniha);
-            return true;
-        }
-        else
+        if (!seznamKnih.containsKey(nazev)) {
             return false;
+        }
+        seznamKnih.put(nazev, kniha);
+        return true;
     }
 
     public boolean smazatKnihu(String nazev) {
-        if(SeznamKnih.remove(nazev) != null)
-            return true;
-        else
-            return false;
+        return seznamKnih.remove(nazev) != null;
     }
-    
+
     public boolean vyhledat(String nazev) {
-        Kniha vyhledanaKniha;
-        if(SeznamKnih.containsKey(nazev)) {
-            vyhledanaKniha = SeznamKnih.get(nazev);
-            System.out.println("Vyhledaná kniha:");
-            System.out.println(vyhledanaKniha);
-            return true;
-        }
-        else
+        Kniha kniha = seznamKnih.get(nazev);
+        if (kniha == null) {
             return false;
+        }
+        System.out.println("Vyhledaná kniha:");
+        System.out.println(kniha);
+        return true;
     }
 
     public boolean nastavitDostupnostKnihy(String nazev, boolean stav) {
-        Kniha vyhledanaKniha;
-        if(SeznamKnih.containsKey(nazev)) {
-            vyhledanaKniha = SeznamKnih.get(nazev);
-            vyhledanaKniha.nastavitDostupnost(stav);
-            return true;
-        }
-        else
+        Kniha kniha = seznamKnih.get(nazev);
+        if (kniha == null) {
             return false;
+        }
+        kniha.nastavitDostupnost(stav);
+        return true;
     }
 
     public boolean vypisKnih() {
         try {
-        System.out.println("Výpis knih:");
-        for (Kniha kniha : SeznamKnih.values()) {
-            System.out.println(kniha);
-        }
-        return true;
-        }catch(Exception e) {
+            System.out.println("Výpis knih:");
+            for (Kniha kniha : seznamKnih.values()) {
+                System.out.println(kniha);
+            }
+            return true;
+        } catch (Exception e) {
             System.out.println("Nelze vypsat knihy");
             return false;
         }
@@ -79,8 +66,7 @@ public class Knihovna {
 
     public void vypisAutora(String jmeno) {
         SortedMap<Integer, List<Kniha>> autorovyKnizky = new TreeMap<>();
-    
-        for (Kniha kniha : SeznamKnih.values()) {
+        for (Kniha kniha : seznamKnih.values()) {
             String[] autori = kniha.getAutor();
             for (String autor : autori) {
                 if (autor.equals(jmeno)) {
@@ -91,9 +77,7 @@ public class Knihovna {
                 }
             }
         }
-    
         System.out.println("Chronologicky seřazené knihy od autora " + jmeno + ":");
-    
         for (List<Kniha> knihy : autorovyKnizky.values()) {
             for (Kniha kniha : knihy) {
                 System.out.println(kniha);
@@ -102,59 +86,46 @@ public class Knihovna {
     }
 
     public void vypisZanru(TypKnihy typ) {
-        
         System.out.println("Výpis knih podle žánru: ");
-        for (Kniha kniha : SeznamKnih.values()) {
-            if(kniha.getTypKnihy() == typ)
+        for (Kniha kniha : seznamKnih.values()) {
+            if (kniha.getTypKnihy() == typ) {
                 System.out.println(kniha);
+            }
         }
     }
 
     public void vypisVypujceno() {
-        
         System.out.println("Výpis vypůjčených knih: ");
-        for (Kniha kniha : SeznamKnih.values()) {
-            if(!kniha.getDostupnost())
+        for (Kniha kniha : seznamKnih.values()) {
+            if (!kniha.getDostupnost()) {
                 System.out.println(kniha);
+            }
         }
     }
 
     public boolean ulozitKnihyDoDatabaze() {
-       if(_db.ulozitDb(new TreeMap<String,Kniha>(SeznamKnih)))
-            return true;
-        else
-            return false;
+        return db.ulozitDb(new TreeMap<>(seznamKnih));
     }
 
     public boolean nacistKnihyZDatabaze() {
-        SeznamKnih = _db.nacistDb();
-        return !SeznamKnih.isEmpty();
-                        
+        seznamKnih.putAll(db.nacistDb());
+        return !seznamKnih.isEmpty();
     }
 
     public boolean ulozitKnihu(String nazev) {
-        return _db.ulozitKnihu(SeznamKnih.get(nazev));
+        return db.ulozitKnihu(seznamKnih.get(nazev));
     }
 
     public boolean nacistKnihu(String nazev) {
-        
-        if (_db.nacistKnihu((TreeMap<String,Kniha>)SeznamKnih, nazev)) {
-            System.out.println(SeznamKnih.get(nazev));
-            return true; 
-        } 
-        else {
-            return false;
-        }
+        return db.nacistKnihu((TreeMap<String, Kniha>) seznamKnih, nazev);
     }
 
     public TypKnihy getTypKnihy(String nazev) {
-        Kniha vyhledanaKniha;
-        vyhledanaKniha = SeznamKnih.get(nazev);
-        return vyhledanaKniha.getTypKnihy();
-                 
+        Kniha kniha = seznamKnih.get(nazev);
+        return kniha == null ? null : kniha.getTypKnihy();
     }
 
     public boolean overitExistenci(String nazev) {
-        return SeznamKnih.containsKey(nazev);
+        return seznamKnih.containsKey(nazev);
     }
 }

@@ -6,7 +6,7 @@ public class App {
     
     public static void main(String[] args) {
         String Nazev;
-         Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         Scanner entrSc = new Scanner(System.in);
         knihovna.nacistKnihyZDatabaze();
         boolean run = true;
