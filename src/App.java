@@ -10,7 +10,8 @@ public class App {
         Scanner entrSc = new Scanner(System.in);
         knihovna.nacistKnihyZDatabaze();
         boolean run = true;
- 
+        
+        try {
         while (run) {
             System.out.println();
             System.out.println("Vyberte akci:");
@@ -94,6 +95,11 @@ public class App {
                 System.out.println("Stiskněte Enter pro pokračování...");
                 entrSc.nextLine();  
             }
+        }
+        }
+        catch (java.util.NoSuchElementException e) {
+            knihovna.ulozitKnihyDoDatabaze();
+                        
         }
 
         System.out.println("Konec programu.");

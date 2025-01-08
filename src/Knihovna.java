@@ -24,7 +24,8 @@ public class Knihovna {
         if (!seznamKnih.containsKey(nazev)) {
             return false;
         }
-        seznamKnih.put(nazev, kniha);
+        seznamKnih.remove(nazev);
+        seznamKnih.put(kniha.getNazev(), kniha);
         return true;
     }
 
